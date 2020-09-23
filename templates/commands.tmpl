@@ -249,6 +249,7 @@ func {{ $api }}Register(subcommand bool) {
 					Hidden: {{ .Hidden }},
 				{{- end }}
 				Example: examples,
+				Group: {{if not .Tags}} "" {{ else }} "{{index .Tags 0}}" {{ end }},
 				Args: cobra.MinimumNArgs({{ len .RequiredParams }}),
 				Run: func(cmd *cobra.Command, args []string) {
 					{{- if .CanHaveBody }}

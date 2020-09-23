@@ -57,6 +57,7 @@ type Operation struct {
 	CanHaveBody    bool
 	ReturnType     string
 	Path           string
+	Tags           []string
 	AllParams      []*Param
 	RequiredParams []*Param
 	OptionalParams []*Param
@@ -292,6 +293,7 @@ func ProcessAPI(shortName string, api *openapi3.Swagger) *OpenAPI {
 				ReturnType:     returnType,
 				Path:           path,
 				AllParams:      params,
+				Tags:           operation.Tags,
 				RequiredParams: requiredParams,
 				OptionalParams: optionalParams,
 				MediaType:      reqMt,
